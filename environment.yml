@@ -1,0 +1,8 @@
+name: destiny
+dependencies:
+  - python=3.9
+  - pip
+  - pip:
+      - Flask
+      - flask-cors
+      - passlib

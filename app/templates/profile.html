@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>프로필 입력</h2>
+<form method="post">
+    이름: <input type="text" name="name" value="{{ user['name'] or '' }}"><br>
+    나이: <input type="number" name="age" value="{{ user['age'] or '' }}"><br>
+    성별:
+    <label><input type="radio" name="gender" value="남성" {% if user['gender'] == '남성' %}checked{% endif %}> 남성</label>
+    <label><input type="radio" name="gender" value="여성" {% if user['gender'] == '여성' %}checked{% endif %}> 여성</label>
+    <label><input type="radio" name="gender" value="기타" {% if user['gender'] == '기타' %}checked{% endif %}> 기타</label>
+    <br>
+    MBTI: <input type="text" name="mbti" value="{{ user['mbti'] or '' }}"><br>
+    성격(예: 조용한, 활발한): <input type="text" name="personality" value="{{ user['personality'] or '' }}"><br>
+    외모(예: 귀여운, 세련된): <input type="text" name="appearance" value="{{ user['appearance'] or '' }}"><br>
+    키(cm): <input type="number" name="height" value="{{ user['height'] or '' }}"><br>
+    몸무게(kg): <input type="number" name="weight" value="{{ user['weight'] or '' }}"><br>
+    체형(예: 마른, 평균, 근육질): <input type="text" name="body_shape" value="{{ user['body_shape'] or '' }}"><br>
+    취미: <input type="text" name="hobbies" value="{{ user['hobbies'] or '' }}"><br>
+    음악 스타일: <input type="text" name="music_style" value="{{ user['music_style'] or '' }}"><br>
+    <h3>이상형</h3>
+    최대 나이 차이: <input type="number" name="ideal_age_diff" value="{{ user['ideal_age_diff'] or '' }}"><br>
+    MBTI: <input type="text" name="ideal_mbti" value="{{ user['ideal_mbti'] or '' }}"><br>
+    성격: <input type="text" name="ideal_personality" value="{{ user['ideal_personality'] or '' }}"><br>
+    외모: <input type="text" name="ideal_appearance" value="{{ user['ideal_appearance'] or '' }}"><br>
+    키 (예: 168~174): <input type="text" name="ideal_height_range" value="{{ user['ideal_height_range'] or '' }}"><br>
+    몸무게 (예: 50~54): <input type="text" name="ideal_weight_range" value="{{ user['ideal_weight_range'] or '' }}"><br>
+    체형: <input type="text" name="ideal_body_shape" value="{{ user['ideal_body_shape'] or '' }}"><br>
+    <button type="submit">저장</button>
+</form>
+
+<br><br>
+<a href="{{ url_for('bp.recommend') }}">
+  <button type="button">👥 사용자 추천 결과 보기</button>
+</a>
+
+<br><br>
+<!-- ✅ 홈으로 돌아가기 버튼 -->
+<a href="{{ url_for('bp.logout') }}" style="display: inline-block; padding: 8px 16px; background-color: red; color: white; border-radius: 4px; text-decoration: none;">
+  로그아웃
+</a>
+{% endblock %}

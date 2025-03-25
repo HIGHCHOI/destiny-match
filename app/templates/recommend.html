@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ user['username'] }}님을 위한 AI 추천</h2>
+
+<h3>🔹 나이가 비슷한 사용자 Top 2</h3>
+<ul>
+  {% for u, score in age_sim %}
+    <li>{{ u['username'] }} ({{ u['age'] }}세, 차이: {{ score }}세)</li>
+  {% endfor %}
+</ul>
+
+<h3>🔹 MBTI가 비슷한 사용자 Top 2</h3>
+<ul>
+  {% for u, score in mbti_sim %}
+    <li>{{ u['username'] }} (MBTI: {{ u['mbti'] }}, 공통: {{ score }}글자)</li>
+  {% endfor %}
+</ul>
+
+<h3>🔹 취미가 비슷한 사용자 Top 2</h3>
+<ul>
+  {% for u, score in hobby_sim %}
+    <li>{{ u['username'] }} (공통 취미 수: {{ score }})</li>
+  {% endfor %}
+</ul>
+
+<h3>🔹 음악 스타일이 비슷한 사용자 Top 2</h3>
+<ul>
+  {% for u, score in music_sim %}
+    <li>{{ u['username'] }} (공통 장르 수: {{ score }})</li>
+  {% endfor %}
+</ul>
+
+<h3>🔹 이상형이 잘 부합하는 사용자 Top 2</h3>
+<ul>
+  {% for u in ideal_sim %}
+    <li>{{ u['username'] }} ({{ u['gender'] }}, {{ u['age'] }}세)</li>
+  {% else %}
+    <li>조건에 맞는 사용자가 없습니다.</li>
+  {% endfor %}
+</ul>
+
+<br>
+<a href="{{ url_for('bp.profile') }}">
+  <button type="button">프로필로 돌아가기</button>
+</a>
+<a href="{{ url_for('bp.logout') }}">
+  <button type="button">로그아웃</button>
+</a>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>환영합니다!</h2>
+<p>원하시는 작업을 선택하세요:</p>
+<a href="{{ url_for('bp.signup') }}"><button>회원가입</button></a>
+<a href="{{ url_for('bp.login') }}"><button>로그인</button></a>
+{% endblock %}
